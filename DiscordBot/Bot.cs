@@ -54,7 +54,7 @@ namespace DiscordBot
             #endregion
 
             #region register command scripts
-            Commands.RegisterCommands<ExampleCommands>();
+            //Commands.RegisterCommands<ExampleCommands>();
             Commands.RegisterCommands<CustomCommands>();
 
             #endregion
