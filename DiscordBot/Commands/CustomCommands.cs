@@ -1,8 +1,6 @@
-﻿using DSharpPlus;
-using DSharpPlus.CommandsNext;
+﻿using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
 using DSharpPlus.Entities;
-using System.Drawing;
 using System.Threading.Tasks;
 
 namespace DiscordBot.Commands
@@ -14,7 +12,7 @@ namespace DiscordBot.Commands
         public async Task CSCode(CommandContext ctx, params string[] msg)
         {
             var codingChannel = ctx.Channel.Guild.GetChannel(648390408568832007);
-            string link = "https://discordapp.com/channels/" + ctx.Guild.Id + "648390408568832007" + ctx.Message.Id;
+            string link = "https://discordapp.com/channels/" + ctx.Guild.Id + "/648390408568832007/" + ctx.Message.Id;
             string message = "```cs\n" + ctx.Message.Content.ToString().Remove(0, 3) + "```";
 
             var embedLink = new DiscordEmbedBuilder()
@@ -40,7 +38,7 @@ namespace DiscordBot.Commands
         public async Task PYCode(CommandContext ctx, params string[] msg)
         {
             var codingChannel = ctx.Channel.Guild.GetChannel(648390408568832007);
-            string link = "https://discordapp.com/channels/" + ctx.Guild.Id + "648390408568832007" + ctx.Message.Id;
+            string link = "https://discordapp.com/channels/" + ctx.Guild.Id + "/648390408568832007/" + ctx.Message.Id;
             string message = "```py\n" + ctx.Message.Content.ToString().Remove(0, 3) + "```";
 
             var embedLink = new DiscordEmbedBuilder()

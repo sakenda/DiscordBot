@@ -62,9 +62,5 @@ namespace DiscordBot.Commands
 
             await ctx.Channel.SendMessageAsync(string.Join("\n", results)).ConfigureAwait(false);
         }
-
-
-
-
     }
 }
