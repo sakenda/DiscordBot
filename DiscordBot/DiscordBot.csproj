@@ -3,10 +3,25 @@
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
 		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<ApplicationIcon>DiscordBot.ico</ApplicationIcon>
+		<StartupObject>DiscordBot.Program</StartupObject>
+		<Authors>Michael Barth</Authors>
+		<Company>BarthWare</Company>
+		<Version>0.2</Version>
+		<PackageIcon>static-assets-upload5213265965192499768.jpg</PackageIcon>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <OutputPath>BUILDS\</OutputPath>
 	</PropertyGroup>
 
 	<ItemGroup>
+		<None Include="..\..\..\..\Desktop\static-assets-upload5213265965192499768.jpg" Link="static-assets-upload5213265965192499768.jpg">
+		  <Pack>True</Pack>
+		  <PackagePath></PackagePath>
+		</None>
 		<None Include="bin\Debug\netcoreapp3.1\config.json" />
+		<None Include="bin\Release\netcoreapp3.1\config.json" />
 	</ItemGroup>
 
 	<ItemGroup>
