@@ -141,8 +141,8 @@ namespace DiscordBot.Commands
 
             var emojiStep = new ReactionStep("Yes or No?", new Dictionary<DiscordEmoji, ReactionStepData>
             {
-                {DiscordEmoji.FromName(ctx.Client, ":thumbsup"), new ReactionStepData { Content = "Yes", NextStep = yesStep } },
-                {DiscordEmoji.FromName(ctx.Client, ":thumbsdown"), new ReactionStepData { Content = "No", NextStep = noStep } }
+                {DiscordEmoji.FromName(ctx.Client, ":thumbsup:"), new ReactionStepData { Content = "Yes", NextStep = yesStep } },
+                {DiscordEmoji.FromName(ctx.Client, ":thumbsdown:"), new ReactionStepData { Content = "No", NextStep = noStep } }
             });
 
             var userChannel = await ctx.Member.CreateDmChannelAsync().ConfigureAwait(false);
