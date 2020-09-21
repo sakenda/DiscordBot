@@ -1,7 +1,6 @@
 ﻿using DiscordBot.Commands;
 using DSharpPlus;
 using DSharpPlus.CommandsNext;
-using DSharpPlus.Entities;
 using DSharpPlus.EventArgs;
 using DSharpPlus.Interactivity;
 using Microsoft.Extensions.Logging;
