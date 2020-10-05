@@ -1,0 +1,9 @@
+{
+  "token": "Enter your Token here",
+  "coding-channel": "756866685054746625",
+
+  "prefix": ".",
+  "cs": "```cs\n",
+  "py": "```py\n",
+  "code-suffix": "```"
+}
