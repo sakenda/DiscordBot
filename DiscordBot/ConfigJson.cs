@@ -18,7 +18,7 @@ namespace DiscordBot
 
         public static async Task<ConfigJson> GetJSonAsync()
         {
-            string configFilePath = "config1.json";
+            string configFilePath = "config.json";
 
             if (!File.Exists(configFilePath))
             {
@@ -41,6 +41,7 @@ namespace DiscordBot
             using (var fs = File.OpenRead(configFilePath))
             using (var sr = new StreamReader(fs, new UTF8Encoding(false)))
                 json = await sr.ReadToEndAsync().ConfigureAwait(false);
+
             return JsonConvert.DeserializeObject<ConfigJson>(json);
         }
 
@@ -54,5 +55,6 @@ namespace DiscordBot
             py = "```py\n",
             codeSuffix = "```",
         };
+
     }
 }

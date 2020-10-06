@@ -16,6 +16,7 @@ namespace DiscordBot
         internal InteractivityExtension Interactivity { get; private set; }
 
         internal ConfigJson configJson = ConfigJson.GetJSonAsync().Result;
+        internal StashJson stashJson = new StashJson();
 
         public async Task RunAsync()
         {
@@ -48,6 +49,8 @@ namespace DiscordBot
             Commands.RegisterCommands<UserStashCommands>();
             #endregion
 
+            stashJson.GetUsersStash();
+
             await Client.ConnectAsync().ConfigureAwait(false);
             await Task.Delay(-1).ConfigureAwait(false);
 
@@ -58,5 +61,6 @@ namespace DiscordBot
             e.Client.Logger.Log(LogLevel.Information, new EventId(102, "ClientReady"), $"{nameof(DiscordBot)}: Client is ready to process events.");
             return Task.CompletedTask;
         }
+
     }
 }
