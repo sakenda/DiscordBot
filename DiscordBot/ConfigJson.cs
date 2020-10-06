@@ -24,12 +24,17 @@ namespace DiscordBot
             {
                 Console.WriteLine("No Config found, please enter BotToken from 'https://discord.com/developers/applications/': ");
 
-                // need exception handler
-                var configContent = CreateConfig(Console.ReadLine());
+                string tokenTemp = Console.ReadLine();
+                if (string.IsNullOrEmpty(tokenTemp))
+                {
+                    Console.WriteLine("Token cannot be null or empty, try again: ");
+                    tokenTemp = Console.ReadLine();
+                }
 
+                var configContent = CreateConfig(tokenTemp);
                 var serCont = JsonConvert.SerializeObject(configContent);
                 File.WriteAllText(configFilePath, serCont);
-                Console.WriteLine($"Configfile created. Starting Bot....");
+                Console.WriteLine("Configfile created. Try starting Bot....\n");
             }
 
             var json = string.Empty;

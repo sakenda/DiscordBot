@@ -19,6 +19,7 @@ namespace DiscordBot
 
         public async Task RunAsync()
         {
+            #region Client setup
             var clientConfig = new DiscordConfiguration
             {
                 Token = configJson.Token,
@@ -30,7 +31,9 @@ namespace DiscordBot
             Client = new DiscordClient(clientConfig);
             Client.Ready += OnClientReady;
             Client.UseInteractivity(new InteractivityConfiguration { Timeout = TimeSpan.FromSeconds(60) }); //sets global time for interactivity
+            #endregion
 
+            #region Commands setup
             var commandsconfig = new CommandsNextConfiguration
             {
                 StringPrefixes = new string[] { configJson.Prefix },
@@ -43,9 +46,11 @@ namespace DiscordBot
             Commands.RegisterCommands<ExampleCommands>();
             Commands.RegisterCommands<CodeScriptCommands>();
             Commands.RegisterCommands<UserStashCommands>();
+            #endregion
 
             await Client.ConnectAsync().ConfigureAwait(false);
             await Task.Delay(-1).ConfigureAwait(false);
+
         }
 
         private Task OnClientReady(ReadyEventArgs e)

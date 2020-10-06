@@ -21,8 +21,7 @@ namespace DiscordBot.Commands
             {
                 if (str[0] == "add")
                 {
-                    foreach (var item in str.Skip(1))
-                        text += item + " ";
+
                     await ctx.Client.SendMessageAsync(ctx.Channel, text).ConfigureAwait(false);
                 }
                 else if (str[0] == "del")
