@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace DiscordBot
 {
     public class StashJson
     {
         internal static Dictionary<string, UserStash> stashes = new Dictionary<string, UserStash>();
-
         private static string path = "UserStash/users.dat";
 
         internal Dictionary<string, UserStash> GetUsersStash()
@@ -16,10 +16,7 @@ namespace DiscordBot
 
             var logFile = ReadLogLines(path);
             foreach (var item in logFile)
-            {
                 stashes.Add(item, new UserStash(item));
-                Console.WriteLine("- " + item);
-            }
 
             return stashes;
         }
@@ -34,17 +31,12 @@ namespace DiscordBot
             }
         }
 
-        public static void SaveNewUserAsync(string username)
+        internal static void SaveNewUserAsync(string username)
         {
-            if (!stashes.ContainsKey(username))
-            {
-                stashes.Add(username, new UserStash(username));
-                using StreamWriter sw = File.AppendText(path);
-                sw.WriteLine(username);
-            }
-            else
-                Console.WriteLine("User already have a stash.");
+            stashes.Add(username, new UserStash(username));
 
+            using StreamWriter sw = File.AppendText(path);
+            sw.WriteLine(username);
         }
 
     }
