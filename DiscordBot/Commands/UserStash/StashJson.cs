@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Threading.Tasks;
 
 namespace DiscordBot
 {
@@ -12,7 +10,11 @@ namespace DiscordBot
 
         internal Dictionary<string, UserStash> GetUsersStash()
         {
-            if (!File.Exists(path)) File.Create(path);
+            if (!File.Exists(path))
+            {
+                Directory.CreateDirectory("UserStash");
+                File.Create(path);
+            }
 
             var logFile = ReadLogLines(path);
             foreach (var item in logFile)

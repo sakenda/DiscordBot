@@ -1,10 +1,6 @@
 ﻿using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
 using DSharpPlus.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace DiscordBot.Commands
@@ -24,6 +20,7 @@ namespace DiscordBot.Commands
         {
             if (!StashJson.stashes.ContainsKey(ctx.User.Username))
             {
+                // Create new Stash if not created in the past
                 StashJson.SaveNewUserAsync(ctx.User.Username);
                 await ctx.Client.SendMessageAsync(ctx.Channel, "Stash created").ConfigureAwait(false);
             }
@@ -33,7 +30,8 @@ namespace DiscordBot.Commands
                 UserStash stash = StashJson.stashes[ctx.User.Username];
                 switch (function)
                 {
-                    case "add":                                                     // Add content to Stash
+                    // Add content to Stash
+                    case "add":
                         if (int.TryParse(str[1], out int slotNumber) && slotNumber <= 10)
                         {
                             stash.AddItem(slotNumber, str);
@@ -51,12 +49,13 @@ namespace DiscordBot.Commands
                                 ).ConfigureAwait(false);
                         break;
 
+                    // Delete content from stash position
                     case "delete":
-                    case "del":                                      // Delete content from stash position
+                    case "del":
                         {
                             if (int.TryParse(str[1], out slotNumber))
                             {
-                                stash.RemoveItem(slotNumber);
+                                stash.RemoveItem(false, slotNumber);
                                 await ctx.Client.SendMessageAsync(ctx.Channel, null, false, Embed(
                                     ctx,
                                     $"{stash.UserName}'s String Stash",
@@ -72,8 +71,9 @@ namespace DiscordBot.Commands
                             break;
                         }
 
+                    // Delete all contentslots
                     case "deleteall":
-                    case "delall":                                // Delete all contentslots
+                    case "delall":
                         {
                             stash.RemoveItem(true);
                             await ctx.Client.SendMessageAsync(ctx.Channel, null, false, Embed(
@@ -84,7 +84,8 @@ namespace DiscordBot.Commands
                             break;
                         }
 
-                    case "show":                                                    // Show content in stash position
+                    // Show content in stash position
+                    case "show":
                         if (int.TryParse(str[1], out slotNumber))
                         {
                             await ctx.Client.SendMessageAsync(ctx.Channel, null, false, Embed(
@@ -101,7 +102,8 @@ namespace DiscordBot.Commands
                                 ).ConfigureAwait(false);
                         break;
 
-                    case "showall":                                                 // Show content in stash position
+                    // Show content in stash position
+                    case "showall":
                         string[] temp = stash.GetAllItems();
                         await ctx.Client.SendMessageAsync(ctx.Channel, null, false, Embed(
                             ctx,

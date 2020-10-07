@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace DiscordBot
 {
@@ -31,20 +30,18 @@ namespace DiscordBot
 
             SaveStash();
         }
-        internal void RemoveItem(int position)
+        internal void RemoveItem(bool all, int position = 0)
         {
-            stash[position - 1] = null;
-            SaveStash();
-        }
-        internal void RemoveItem(bool all)
-        {
-            int counter = 1;
-            if (all)
-                while (counter < 11)
+            if (!all)
+                stash[position - 1] = null;
+            else
+            {
+                while (position < 10)
                 {
-                    RemoveItem(counter);
-                    counter++;
+                    stash[position] = null;
+                    position++;
                 }
+            }
             SaveStash();
         }
 
