@@ -108,16 +108,16 @@ namespace DiscordBot.Commands
                         await ctx.Client.SendMessageAsync(ctx.Channel, null, false, Embed(
                             ctx,
                             $"{stash.UserName}'s String Stash",
-                            $"1     :   {temp[0]}\n" +
-                            $"2     :   {temp[1]}\n" +
-                            $"3     :   {temp[2]}\n" +
-                            $"4     :   {temp[3]}\n" +
-                            $"5     :   {temp[4]}\n" +
-                            $"6     :   {temp[5]}\n" +
-                            $"7     :   {temp[6]}\n" +
-                            $"8     :   {temp[7]}\n" +
-                            $"9     :   {temp[8]}\n" +
-                            $"10    :   {temp[9]}\n"
+                            $"1:   {temp[0]}\n" +
+                            $"2:   {temp[1]}\n" +
+                            $"3:   {temp[2]}\n" +
+                            $"4:   {temp[3]}\n" +
+                            $"5:   {temp[4]}\n" +
+                            $"6:   {temp[5]}\n" +
+                            $"7:   {temp[6]}\n" +
+                            $"8:   {temp[7]}\n" +
+                            $"9:   {temp[8]}\n" +
+                            $"10:   {temp[9]}\n"
                             )).ConfigureAwait(false);
                         break;
 

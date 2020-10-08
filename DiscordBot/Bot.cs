@@ -20,6 +20,10 @@ namespace DiscordBot
 
         public async Task RunAsync()
         {
+            Test.TestPlayer();
+            Console.ReadKey();
+            Environment.Exit(0);
+
             #region Client setup
             var clientConfig = new DiscordConfiguration
             {
@@ -43,8 +47,8 @@ namespace DiscordBot
                 DmHelp = false,
             };
             Commands = Client.UseCommandsNext(commandsconfig);
-            Commands.RegisterCommands<CodeScriptCommandsTest>();
-            Commands.RegisterCommands<ExampleCommands>();
+            //Commands.RegisterCommands<CodeScriptCommandsTest>();
+            //Commands.RegisterCommands<ExampleCommands>();
             Commands.RegisterCommands<CodeScriptCommands>();
             Commands.RegisterCommands<UserStashCommands>();
             #endregion
